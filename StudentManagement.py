@@ -10,6 +10,7 @@ db = mysql.connector.connect(
 
 cursor = db.cursor()
 
+#Add students
 def add_student():
     roll = int(input("Enter Roll Number: "))
     name = input("Enter Name: ")
@@ -23,6 +24,7 @@ def add_student():
 
     print("Student added successfully")
 
+#View student
 def view_students():
     cursor.execute("SELECT * FROM students")
     result = cursor.fetchall()
@@ -30,6 +32,7 @@ def view_students():
     for row in result:
         print("Roll:", row[0], "Name:", row[1], "Marks:", row[2])
 
+#Search students
 def search_student():
     roll = int(input("Enter Roll Number to search: "))
     sql = "SELECT * FROM students WHERE roll_no=%s"
@@ -41,7 +44,8 @@ def search_student():
         print("Roll:",result[0],"Name:",result[1],"Marks:",result[2])
     else:
         print("Student not found")
-
+        
+#Update Students
 def update_student():
     roll = int(input("Enter Roll number to update: "))
     name = input(input("Enter new Name: "))
@@ -52,7 +56,8 @@ def update_student():
     cursor.execute(sql,val)
     db.commit()
     print("Student updated successfully")
-    
+
+#Delete Students
 def delete_student():
     roll = int(input("Enter roll number: "))
     sql = "DELETE FROM students WHERE roll_no=%s"
@@ -91,3 +96,4 @@ while True:
     else:
 
         print("Invalid Choice")
+
