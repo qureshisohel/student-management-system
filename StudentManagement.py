@@ -4,7 +4,7 @@ import mysql.connector
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="6353849512",
+    password="root",
     database="student_management"
 )
 
@@ -89,4 +89,5 @@ while True:
         print("Exiting Program")
         break
     else:
+
         print("Invalid Choice")
